@@ -1,0 +1,8 @@
+// Art check: close-up line-ups of every character, on both renderers.
+const T=require('./lib');
+(async()=>{for(const mode of['three','canvas']){const t=await T.open({size:'land',mode,save:T.save({ranks:{clear:1},loadout:['clear',null,null,null]})}),p=t.page;await p.setViewportSize({width:1100,height:520});await p.click('#bstart');await p.waitForTimeout(500);await t.shot('art-hub-'+mode);
+  await p.evaluate(()=>{$('#touch').classList.add('hide');GAME.go(RunScene,'1');G.run.waves=[];G.run.state='x';const ks=['wisp','moth','creeper','flooder','mimic','yesman','stat','gremlin'];ks.forEach((k,i)=>{const e=spawnEnemy(k,6+i*2.2,ENEMY[k].fly?1.2:0,{spawn:0});e.ai={init(){},update(e){e.vx=0;e.vy=0;}};if(e.disg)e.def.reveal(e);});G.p.x=3.2;G.w.plats.length=0;UI.mode='x';G.punch(1.45,999,13,1.2);});
+  await p.evaluate(()=>{for(let i=0;i<90;i++){G.t+=1/60;G.scene.update(1/60);}R.cam.x=13;R.cam.zoom=1.45;});await p.waitForTimeout(300);await t.shot('art-enemies-'+mode);
+  for(const [nm,ids] of [['a',['mumbler','liar','hydra','baron','rambler']],['b',['picker','flood','loop','tangle']]]){await p.evaluate((ids)=>{for(const e of G.w.ents.slice()){R.remove(e.node);}G.w.ents.length=0;ids.forEach((k,i)=>{const e=spawnEnemy('b_'+k,5+i*4.6,0,{spawn:0});e.ai={init(){},update(e){e.vx=0;}};if(k==='hydra')BOSS.hydra.onPhase(e),BOSS.hydra.onPhase(e);});G.p.x=1.5;G.punch(1,999,13,2);for(let i=0;i<30;i++){G.t+=1/60;G.scene.update(1/60);}R.cam.x=14;R.cam.zoom=1;FX.clear();},ids);await p.waitForTimeout(300);await t.shot('art-boss-'+nm+'-'+mode);}
+  console.log(mode,'errors',t.errs.length,t.errs.slice(0,5));await t.close();}
+  await T.done();})();

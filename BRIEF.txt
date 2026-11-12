@@ -1,0 +1,100 @@
+Build a complete, playable 2.5D web game that teaches
+people to use Claude well. Fun comes first: it should be
+a good action game even with the lessons removed.
+
+Build it as one self-contained page. Use Three.js for
+rendering: a 3D scene with gameplay locked to a 2D
+side-on plane, depth-layered scenery, dynamic lights,
+fog, and a camera that pans and zooms on big moments.
+Test that Three.js loads first; if it doesn't, fall back
+to plain Canvas with layered parallax and tell me. No
+image or audio files: build models from simple shapes
+and draw textures in code. Touch controls first:
+on-screen stick and buttons, plus keyboard. Target a
+smooth frame rate on a mid-range phone and cut effects
+before cutting speed. Save progress in the browser, and
+keep the game working if saving is unavailable.
+
+STORY
+A fog called the Static has muddled the land of Lumen, so
+nothing anyone asks for comes out right. You are an
+apprentice Promptsmith clearing it stage by stage.
+
+STRUCTURE
+- Hub: a cozy, bright side-scrolling town with mentors,
+  skill shrines, the Codex, and a stage gate.
+- Stages: 5-10 minute runs through randomised rooms of
+  real-time combat (move, jump, dodge, attack, abilities),
+  each ending in a boss. Beating it opens the next stage.
+- 9 stages: 3 shared, then 2 per track.
+- Enemies are Claude failure modes: Vague Wisps,
+  Hallucination Mimics, Scope Creep Hydra, Context Flood.
+
+PROGRESSION
+Abilities and ranks are permanent. Each run also offers
+temporary boons that change how abilities behave and
+reset when the run ends.
+
+ABILITIES = CLAUDE TECHNIQUES (18 total, 3 ranks each)
+The combat effect mirrors the technique. Shared nine:
+- Clear Ask (specific request): precise aimed shot
+- Context (background info): buff that powers attacks
+- Examples: echoes that copy your last attack
+- Format (say what output you want): shapes your attack
+- Role (give Claude a role): stance switch
+- Think Step by Step: slow charged heavy hit
+- Iterate (follow-ups): combo chains
+- Verify (ask for sources): unmasks Mimics
+- Critique (ask for pushback): turns enemy hits back
+Three more per track, designed by you. Builder must
+cover sub-agents (companions with assigned jobs), Skills
+(a programmable rune), and connectors/MCP (portals that
+pull outside tools into the arena).
+
+LEARNING AN ABILITY (at a shrine, never mid-fight)
+1. Watch: weak vs strong prompt, with results shown.
+2. Fix: repair a broken prompt.
+3. Write: build your own from blocks plus short text.
+4. Mentor quest: use it on a small real-world task.
+Ranks II and III repeat this at higher difficulty. Each
+mastered ability adds a copyable prompt template to the
+Codex for use with the real Claude.
+
+BOSSES
+Real-time fights. At set health points the boss shields
+and time slows: solve a short prompt challenge with
+learned techniques to break the shield. A weak answer
+chips; a strong one staggers.
+
+TRACKS
+After stage 3, pick Writer, Analyst, or Builder. Tracks
+change stages, examples and quests. Switch any time.
+
+GRADING
+No API calls. Check every challenge with authored
+rubrics and block-based answers.
+
+FEEL AND POLISH
+- Sound: synthesise all effects and a looping music
+  track per area with the Web Audio API. Include a mute
+  button.
+- Impact: hit-stop, screen shake, knockback, damage
+  numbers and particles on every hit. Vibrate on big
+  hits where the phone supports it.
+- Glow and bloom on abilities, with each technique
+  having its own colour and shape.
+- Readable UI: big tap targets, short text, and no
+  lesson screen longer than three lines at a time.
+- If you have a design or frontend skill available,
+  load it before building the hub, menus and shrines.
+
+HOW TO WORK
+Plan the whole game first, then build it in passes on
+the same page: combat and hub, shrines and abilities,
+stages and bosses, tracks and Codex, polish. Get combat
+feeling good before adding stages. Don't stop for
+approval between passes. If you run out of room, say
+exactly what is left and continue when I say "keep
+going". After each pass, test it and fix anything slow,
+text-heavy or clunky. Check lesson content against
+Anthropic's current prompting docs, not memory.
